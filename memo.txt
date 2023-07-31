@@ -1,0 +1,51 @@
+package threeweekfive;
+
+public class Fractional {
+    static int numerator;
+    static int denominator;
+
+    
+
+    public static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        int[] 분수1 = { 1, 2 }; // 분자0 분모1
+        int[] 분수2 = { 2, 8 };
+
+        // int getNumerator(int [] frectioanl);
+
+        // System.out.printf("%s %n", 분자x + "/" + 분모x);
+        // System.out.printf("%s %n", 분자y + "/" + 분모y);
+        // System.out.println(gcd(60, 5));
+        add(분수1, 분수2);
+        System.out.printf("%d/%d%n", numerator, denominator);
+    }
+
+
+    public static int getNumerator(int[] frectioanl) {
+        return frectioanl[0]; // 분자
+    }
+
+    public static int getDenominator(int[] frectioanl) {
+        return frectioanl[1]; // 분모
+    }
+
+    private static void add(int[] 분수1, int[] 분수2) {
+
+        int 분수분모 = getDenominator(분수1) * getDenominator(분수2); //분모통일
+
+        int 분수분자 = ((getNumerator(분수1) * getDenominator(분수2)) + (getNumerator(분수2) * getDenominator(분수1))); // 분자계산
+        // System.out.println(gcd(분자x, 분모x));
+        // System.out.println(gcd(분자y, 분모y));
+        int z = gcd(분수분모, 분수분자);
+
+        numerator = 분수분자 / z;
+        denominator = 분수분모 / z;
+    }
+
+}
